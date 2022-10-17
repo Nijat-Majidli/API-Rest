@@ -16,6 +16,7 @@ $curl = curl_init("http://127.0.0.1/ApiRest/api.php");
 // On définit la méthode de la requête
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET"); //GET, POST, PUT, DELETE
 
+// On envoie le tableau $datas vers api.php
 curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($datas));
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -24,23 +25,22 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
+// On le convertit en format tableau
 $result = json_decode($response, true);
-?>
 
-<form method="GET" action="show.php" class="my-5">
-    <div class="form-group">
-        <label>Renseigner un nom</label>
-        <input type="text" class="form-control mb-2" id="search"> 
-        <button type="button" class="btn btn-warning float-right"> Rechercher </button>  
-    </div>
-</form>
-
-<?php
-
-echo "<b>$result[message]</b>  <br><br>";
-
-if ($result["code"] == "200") {
+if ($result["code"] == "200") 
+{
 ?>  
+    <form method="GET" action="show.php" class="my-5">
+        <div class="form-group">
+            <label>Renseigner un nom</label>
+            <input type="text" class="form-control mb-2" id="search"> 
+            <button type="button" class="btn btn-warning float-right"> Rechercher </button>  
+        </div>
+    </form>
+
+    <b> <?php $result['message'] ?></b>  <br><br>
+
     <table class="table table-striped" id="userTable">
         <thead>
             <tr>
@@ -82,13 +82,17 @@ if ($result["code"] == "200") {
 
 <?php
 }
-
+else{    
+    echo "<b>$result[message]</b>  <br><br>";
+}
 
 
 include("footer.php");
 
 ?>
 
+
+<!-- Javascript -->
 <script>
     $(document).ready(function(){
         $value = $("#search").on("keyup", function(){

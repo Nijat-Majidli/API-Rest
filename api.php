@@ -8,7 +8,7 @@ header("Content-Type:application/json; charset=utf-8");
 parse_str(file_get_contents("php://input"), $datas);
 
 if ($datas["token"] != sha1(md5("nijatmajidli"))){
-    show(NULL, 403, "Access refused");
+    show(null, 403, "Access refused");
 }
 
 function show($userInfo, $code, $message){
@@ -17,7 +17,10 @@ function show($userInfo, $code, $message){
     $informations["code"] = $code;
     $informations["message"] = $message;
     
+    // On convertit le tableau $information en format JSON et on le met dans la variable $result
     $result = json_encode($informations, JSON_UNESCAPED_UNICODE);
+    
+    // On renvoie la réponse
     echo $result;
 }
 
