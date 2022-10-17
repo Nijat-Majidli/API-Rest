@@ -26,7 +26,7 @@ $datas = array(
 );
 
 // On définit le chemin:
-$curl = curl_init("http://127.0.0.1/lmbapi/api.php");
+$curl = curl_init("http://127.0.0.1/ApiRest/api.php");
 
 // On définit la méthode de la requête
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT"); //GET, POST, PUT, DELETE

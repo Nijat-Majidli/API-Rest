@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `lmb`;
-CREATE DATABASE `lmb`;
-USE `lmb`;
+DROP DATABASE IF EXISTS `ApiRest`;
+CREATE DATABASE `ApiRest`;
+USE `ApiRest`;
 
 CREATE TABLE users(
    user_id INT,
@@ -19,4 +19,5 @@ VALUES
 (1, 'Richard Jules', '07 51 25 08 10', 'richard@gmail.com', '5 rue Général Leclerc', 80000, 'Amiens', 'France'),
 (2, 'Paul Michel', '07 50 27 81 18', 'p.michel@yahoo.fr', '52 rue Jean Jaures', 75000, 'Paris', 'France'),
 (3, 'Mathieu Bompart', '01 23 45 67 89', 'bompart@homail.com', '836 rue du Mas de Verchant', 34000, 'Montpellier', 'France'),
-(4, 'Celine Périk', '09 87 65 43 21', 'c-perik@gmail.com', '15 rue Général Leclerc', 13000, 'Marseille', 'France');
+(4, 'Celine Périk', '09 87 65 43 21', 'c-perik@gmail.com', '15 rue Général Leclerc', 13000, 'Marseille', 'France'),
+(5, 'Dominguez Roger', '02 34 56 78 90', 'rog_dom55@gmail.com', '21 boulevard CDG', 95000, 'Cergy', 'France');

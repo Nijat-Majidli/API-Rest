@@ -72,7 +72,7 @@ function getUser($id=0) {
                     "Pays" => $ligne["user_pays"]);
             }
 
-            show($users, 200, "Le fiche d'utilisateur: ".$ligne['user_nom_prenom']);
+            show($users, 200, $ligne['user_nom_prenom']);
         } 
         else 
         {

@@ -13,7 +13,7 @@ $datas = array(
 );
 
 // On définit le chemin:
-$curl = curl_init("http://127.0.0.1/lmbapi/api.php");
+$curl = curl_init("http://127.0.0.1/ApiRest/api.php");
 
 // On définit la méthode de la requête
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET"); //GET, POST, PUT, DELETE
@@ -28,7 +28,7 @@ curl_close($curl);
 
 $result = json_decode($response, true);
 
-echo "<b> $result[message] </b> <br><br>";
+echo "<div class='my-3'> <h3>$result[message]</h3> </div>";
 
 if ($result["code"] == "200") {
 ?>

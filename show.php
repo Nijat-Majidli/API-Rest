@@ -34,8 +34,8 @@ if ($result["code"] == "200")
     <form method="GET" action="show.php" class="my-5">
         <div class="form-group">
             <label>Renseigner un nom</label>
-            <input type="text" class="form-control mb-2" id="search"> 
-            <button type="button" class="btn btn-warning float-right"> Rechercher </button>  
+            <input type="text" class="form-control mb-2" id="searchBar"> 
+            <button type="button" class="btn btn-warning float-right" id="searchButton"> Rechercher </button>  
         </div>
     </form>
 
@@ -95,11 +95,19 @@ include("footer.php");
 <!-- Javascript -->
 <script>
     $(document).ready(function(){
-        $value = $("#search").on("keyup", function(){
-            var value = $(this).val().toLowerCase();
+        $("#searchButton").click(function(){
+            var value = $("#searchBar").val().toLowerCase();
             $("#userTable tr").filter(function(){
                 $(this).toggle($(this).text().toLocaleLowerCase().indexOf(value)>-1);
             })
+        });
+
+        $("#searchBar").on("keyup", function(){
+            var value = $(this).val();
+            if(value=="")
+            {
+                $("#userTable tr").show();
+            }
         })
     })
 </script>
