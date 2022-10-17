@@ -28,7 +28,15 @@ curl_close($curl);
 
 $result = json_decode($response, true);
 
-echo "<div class='my-3'> <h3>$result[message]</h3> </div>";
+?>
+
+<div class="card my-5 bg-warning text-light">
+  <div class="card-body">
+    <h3> <?php echo $result['message']?> </h3> 
+  </div>
+</div>
+
+<?php
 
 if ($result["code"] == "200") {
 ?>
@@ -44,14 +52,16 @@ if ($result["code"] == "200") {
             }
             else
             {
-                echo "<b>$key</b> : <input value='$value' name='$key' class='form-control' disabled> <br><br>";
+                echo "<div class='my-3'> <b>$key</b> : <input value='$value' name='$key' class='form-control' disabled> </div>";
             }
             
         }
     }
 ?>
-        <button type="button" class="btn btn-primary edit"> Editer </button>   
-        <button type="submit" class="btn btn-success validate" style="display:none"> Valider </button> 
+        <div class="text-center">
+            <button type="button" class="btn btn-primary edit w-25"> Editer </button>   
+            <button type="submit" class="btn btn-success validate w-25" style="display:none" onclick="alert('Êtes-vous sûr d\'enregistrer les nouvelles modifications?')"> Enregistrer </button> 
+        </div>
     </form>
 <?php
 }
