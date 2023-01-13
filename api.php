@@ -7,11 +7,13 @@ header("Content-Type:application/json; charset=utf-8");
 // On récupére les données envoyées par l'utilisateur dans le tableau $datas
 parse_str(file_get_contents("php://input"), $datas);
 
-if ($datas["token"] != sha1(md5("nijatmajidli"))){
+if ($datas["token"] != sha1(md5("nijatmajidli")))
+{
     show(null, 403, "Access refused");
 }
 
-function show($userInfo, $code, $message){
+function show($userInfo, $code, $message) 
+{
     // On crée un tableau $informations:
     $informations["data"] = $userInfo;
     $informations["code"] = $code;
@@ -26,7 +28,8 @@ function show($userInfo, $code, $message){
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
-switch($request_method) {
+switch($request_method) 
+{
     case 'GET':
         if(!empty($datas["user_id"])) {
             // Récupérer un seul user
