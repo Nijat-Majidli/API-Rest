@@ -4,23 +4,20 @@ include("header.php");
 
 $token = sha1(md5("nijatmajidli"));
 
-$datas = array(
-    "token" => $token,
-    "user" => ""
-);
+$datas = array("token" => $token, "user" => "");
 
 
 // On définit le chemin:
 $curl = curl_init("http://127.0.0.1/ApiRest/api.php");
 
 // On définit la méthode de la requête
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET"); //GET, POST, PUT, DELETE
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");   //GET, POST, PUT, DELETE
 
 // On envoie le tableau $datas vers api.php
 curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($datas));
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-// On reçois la réponse de "api.php":
+// On reçoit la réponse de "api.php":
 $response = curl_exec($curl);
 
 curl_close($curl);
@@ -92,7 +89,7 @@ include("footer.php");
 ?>
 
 
-<!-- Javascript -->
+<!-- jQuery codes -->
 <script>
     $(document).ready(function(){
         $("#searchButton").click(function(){
