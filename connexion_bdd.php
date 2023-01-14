@@ -1,7 +1,16 @@
 <?php 
 
-// ici un 'OU' car il se peut que le 'localhost' ne soit pas reconnu !
-if ($_SERVER["SERVER_NAME"] == "localhost" || $_SERVER["SERVER_NAME"] == "127.0.0.1")
+// Vérifie si on désire se diriger vers le serveur apirest.nijatmajidli.eu ou bien vers le serveur local.
+// Dans ce cas, host,login, password et BDD sont différents d'un serveur à l'autre:
+if ($_SERVER["SERVER_NAME"] == "apirest.nijatmajidli.eu")
+{
+    // Paramètres de connexion serveur distant
+    $host = "localhost";
+    $login= "u988716521_nijatm";      // Votre login d'accès au serveur de BDD 
+    $password="Mercanli1985@";          // Le Password pour vous identifier auprès du serveur
+    $base = "u988716521_apirest";      // La BDD avec laquelle vous voulez travailler 
+}
+else if ($_SERVER["SERVER_NAME"] == "localhost" || $_SERVER["SERVER_NAME"] == "127.0.0.1")
 {
     // Paramètres de connexion serveur local
     $host = "localhost";
@@ -19,7 +28,6 @@ try
     // Configure des attributs PDO au gestionnaire de base de données
     // Ici nous configurons l'attribut ATTR_ERRORMODE en lui donnant la valeur ERRMODE_EXCEPTION pour afficher des détails sur l'erreur avec un message beaucoup plus clair:
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 	$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 }
