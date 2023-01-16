@@ -6,9 +6,15 @@ $token = sha1(md5("nijatmajidli"));
 
 $datas = array("token" => $token, "user" => "");
 
-
 // On définit le chemin:
-$curl = curl_init("http://127.0.0.1/ApiRest/api.php");
+if ($_SERVER["SERVER_NAME"] == "apirest.nijatmajidli.eu")
+{
+    $curl = curl_init("https://apirest.nijatmajidli.eu/api.php");
+}
+else if ($_SERVER["SERVER_NAME"] == "localhost" || $_SERVER["SERVER_NAME"] == "127.0.0.1")
+{
+    $curl = curl_init("http://127.0.0.1/ApiRest/api.php");
+}
 
 // On définit la méthode de la requête
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");   //GET, POST, PUT, DELETE
@@ -28,7 +34,7 @@ $result = json_decode($response, true);
 if ($result["code"] == "200") 
 {
 ?>  
-    <form method="GET" action="show.php" class="my-5">
+    <form method="GET" action="index.php" class="my-5">
         <div class="form-group">
             <label>Renseigner un nom</label>
             <input type="text" class="form-control mb-2" id="searchBar"> 

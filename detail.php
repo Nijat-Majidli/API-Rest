@@ -13,7 +13,14 @@ $datas = array(
 );
 
 // On définit le chemin:
-$curl = curl_init("http://127.0.0.1/ApiRest/api.php");
+if ($_SERVER["SERVER_NAME"] == "apirest.nijatmajidli.eu")
+{
+    $curl = curl_init("https://apirest.nijatmajidli.eu/api.php");
+}
+else if ($_SERVER["SERVER_NAME"] == "localhost" || $_SERVER["SERVER_NAME"] == "127.0.0.1")
+{
+    $curl = curl_init("http://127.0.0.1/ApiRest/api.php");
+}
 
 // On définit la méthode de la requête
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET"); //GET, POST, PUT, DELETE
